@@ -1,7 +1,7 @@
 <Solution>
-  <Project Path="Application/Application.csproj" />
-  <Project Path="BigoBot.csproj" />
-  <Project Path="Domain/Domain.csproj" />
-  <Project Path="Engine/Engine.csproj" />
-  <Project Path="Infrastructure/Infrastructure.csproj" />
+  <Project Path="src/Application/Application.csproj" />
+  <Project Path="src/Domain/Domain.csproj" />
+  <Project Path="src/Engine/Engine.csproj" />
+  <Project Path="src/Infrastructure/Infrastructure.csproj" />
+  <Project Path="src/Worker/Worker.csproj" />
 </Solution>
