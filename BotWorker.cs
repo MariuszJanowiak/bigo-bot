@@ -6,7 +6,7 @@ namespace BigoBot;
 public sealed class BotWorker : BackgroundService
 {
 
-    private ILogger<BotWorker> _logger { get; set; }
+    private ILogger<BotWorker> _logger { get; }
 
     public BotWorker(ILogger<BotWorker> logger)
     {
