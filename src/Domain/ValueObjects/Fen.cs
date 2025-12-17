@@ -1,4 +1,5 @@
-﻿
+﻿namespace Domain.ValueObjects;
+
 public sealed record Fen
 {
     public string Value { get; }

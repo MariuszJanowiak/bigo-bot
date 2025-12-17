@@ -1,4 +1,6 @@
-﻿public sealed record Square
+﻿namespace Domain.ValueObjects;
+
+public sealed record Square
 {
     public char File { get;  }
 

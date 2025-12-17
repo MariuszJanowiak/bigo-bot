@@ -1,4 +1,6 @@
-﻿public sealed record GameId
+﻿namespace Domain.ValueObjects;
+
+public sealed record GameId
 {
     public string Id { get; }
 

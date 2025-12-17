@@ -1,4 +1,6 @@
-﻿public sealed record UciMove
+﻿namespace Domain.ValueObjects;
+
+public sealed record UciMove
 {
     public Square From { get; }
     public Square To { get; }
