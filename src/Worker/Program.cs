@@ -1,4 +1,4 @@
-using BigoBot;
+using Worker;
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
@@ -8,6 +8,8 @@ var host = Host.CreateDefaultBuilder(args)
     .Build();
 
 await host.RunAsync();
+
+
 
 // TEST FOR BITBOARDS
 
