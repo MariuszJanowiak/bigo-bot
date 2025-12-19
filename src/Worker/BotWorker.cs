@@ -32,7 +32,7 @@ public sealed class BotWorker : BackgroundService
 
         _logger.LogInformation("\n{board}", board.AsciiCoordinates(e2));
 
-        var moves = PawnMoves.WhiteOneStepMoves(board).ToList();
+        var moves = PawnMoves.WhitePawnMove(board).ToList();
         foreach (var m in moves)
         {
             _logger.LogInformation("MOVE: {from}{fromRank}->{to}{toRank}",
