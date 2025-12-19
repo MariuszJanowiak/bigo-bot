@@ -1,6 +1,6 @@
 ﻿using Domain.ValueObjects;
 
-namespace Engine
+namespace Engine.Bitboards
 {
     public static class Bitboard
     {
