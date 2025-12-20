@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Domain.ValueObjects;
+﻿using Domain.ValueObjects;
 
 namespace Engine.Moves;
 
