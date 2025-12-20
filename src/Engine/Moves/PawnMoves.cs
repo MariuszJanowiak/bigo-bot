@@ -35,7 +35,7 @@ public static class PawnMoves
         }
     }
 
-    public static IEnumerable<(Square From, Square To)> BlackPawnPushMoves(PieceBitboards board)
+    public static IEnumerable<(Square From, Square To)> BlackPawnMove(PieceBitboards board)
     {
         ulong targets = BlackPawnTargets(board);
 
