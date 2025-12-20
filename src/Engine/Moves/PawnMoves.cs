@@ -55,4 +55,16 @@ public static class PawnMoves
             yield return (from, to);
         }
     }
+
+    public static IEnumerable<UciMove> WhitePawnMoveUci(PieceBitboards board)
+    {
+        foreach (var (from, to) in WhitePawnMove(board))
+            yield return UciMoveMapper.ToUciMove(from, to);
+    }
+
+    public static IEnumerable<UciMove> BlackPawnMoveUci(PieceBitboards board)
+    {
+        foreach (var (from, to) in BlackPawnMove(board))
+            yield return UciMoveMapper.ToUciMove(from, to);
+    }
 }
