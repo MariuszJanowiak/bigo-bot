@@ -1,8 +1,6 @@
 ﻿using Domain.ValueObjects;
 using Engine.Bitboards;
 using Engine.Moves;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Worker;
 
@@ -15,7 +13,7 @@ public sealed class BotWorker : BackgroundService
     {
         _logger = logger;
     }
-        
+
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var board = new PieceBitboards();
@@ -32,12 +30,21 @@ public sealed class BotWorker : BackgroundService
 
         _logger.LogInformation("\n{board}", board.AsciiCoordinates(e2));
 
-        var moves = PawnMoves.WhitePawnMove(board).ToList();
-        foreach (var m in moves)
+        // From - To
+        foreach (var m in PawnMoves.WhitePawnMove(board))
         {
             _logger.LogInformation("MOVE: {from}{fromRank}->{to}{toRank}",
                 m.From.File, m.From.Rank, m.To.File, m.To.Rank);
         }
 
+        // UCI
+        foreach (var uci in PawnMoves.WhitePawnMoveUci(board))
+        {
+            _logger.LogInformation("UCI: {uci}", $"{uci.From.File}{uci.From.Rank}{uci.To.File}{uci.To.Rank}");
+        }
+
+        // Keep the service running
+        await Task.Delay(Timeout.Infinite, stoppingToken);
     }
+
 }
