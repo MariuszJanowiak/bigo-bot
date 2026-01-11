@@ -1,7 +1,7 @@
 ﻿using Domain.ValueObjects;
 using Engine.Bitboards;
 
-namespace Engine.Moves;
+namespace Engine.Moves.Pieces;
 
 public static class PawnMoves
 {

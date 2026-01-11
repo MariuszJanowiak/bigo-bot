@@ -1,9 +1,8 @@
 ﻿using Engine.Bitboards;
-using Engine.Moves;
+using Engine.Moves.Pieces;
 using Engine.Tests.TestHelpers;
-using Xunit;
 
-namespace Engine.Tests.Moves;
+namespace Engine.Tests;
 
 public sealed class PawnMovesTests
 {

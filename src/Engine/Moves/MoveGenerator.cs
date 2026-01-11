@@ -1,5 +1,6 @@
 ﻿using Domain.ValueObjects;
 using Engine.Bitboards;
+using Engine.Moves.Pieces;
 
 namespace Engine.Moves;
 
