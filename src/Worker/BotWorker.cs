@@ -1,13 +1,13 @@
 ﻿using Domain.ValueObjects;
 using Engine.Bitboards;
+using Engine.Decision;
 using Engine.Moves;
 
 namespace Worker;
 
 public sealed class BotWorker : BackgroundService
 {
-
-    private ILogger<BotWorker> _logger { get; }
+    private readonly ILogger<BotWorker> _logger;
 
     public BotWorker(ILogger<BotWorker> logger)
     {
@@ -30,21 +30,23 @@ public sealed class BotWorker : BackgroundService
 
         _logger.LogInformation("\n{board}", board.AsciiCoordinates(e2));
 
-        // From - To
-        foreach (var m in PawnMoves.WhitePawnMove(board))
-        {
-            _logger.LogInformation("MOVE: {from}{fromRank}->{to}{toRank}",
-                m.From.File, m.From.Rank, m.To.File, m.To.Rank);
-        }
+        bool whiteToMove = true;
 
-        // UCI
-        foreach (var uci in PawnMoves.WhitePawnMoveUci(board))
+        var moves = MoveGenerator.Generate(board, whiteToMove);
+
+        foreach (var uci in moves)
         {
             _logger.LogInformation("UCI: {uci}", $"{uci.From.File}{uci.From.Rank}{uci.To.File}{uci.To.Rank}");
         }
 
-        // Keep the service running
+        var selector = new FirstMoveSelector();
+        var chosen = selector.Select(moves);
+
+        _logger.LogInformation(
+            "CHOSEN MOVE: {uci}",
+            $"{chosen.From.File}{chosen.From.Rank}{chosen.To.File}{chosen.To.Rank}"
+        );
+
         await Task.Delay(Timeout.Infinite, stoppingToken);
     }
-
 }
